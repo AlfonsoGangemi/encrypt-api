@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>API Encrypt Documentation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; max-width: 700px; }
+        h1 { color: #2c3e50; }
+        code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f0f0f0; padding: 10px; border-radius: 6px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+<h1 id="title">API Encrypt Documentation</h1>
+<div id="content"></div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+
+    const contentIt = `
+      <p>Questa API consente di criptare un testo fornito con una chiave tramite una richiesta <code>POST</code>.</p>
+      <h2>Endpoint</h2>
+      <p><code>POST https://encrypt-vercel.vercel.app/api/encrypt</code></p>
+      <h2>Parametri JSON della richiesta</h2>
+      <pre>{
+  "text": "Testo da criptare",
+  "key": "chiaveSegreta"
+}</pre>
+      <h2>Risposta</h2>
+      <p>La API restituisce un JSON con il testo criptato codificato in Base64:</p>
+      <pre>{
+  "encrypted": "IV + testo criptato in Base64"
+}</pre>
+      <h2>Esempio con <code>curl</code></h2>
+      <pre>curl -X POST https://encrypt-vercel.vercel.app/api/encrypt \\
+-H "Content-Type: application/json" \\
+-d '{"text":"Ciao mondo","key":"password123"}'</pre>
+    `;
+
+    const contentEn = `
+      <p>This API allows encrypting a given text with a key via a <code>POST</code> request.</p>
+      <h2>Endpoint</h2>
+      <p><code>POST https://encrypt-vercel.vercel.app/api/encrypt</code></p>
+      <h2>Request JSON parameters</h2>
+      <pre>{
+  "text": "Text to encrypt",
+  "key": "secretKey"
+}</pre>
+      <h2>Response</h2>
+      <p>The API returns a JSON with the encrypted text encoded in Base64:</p>
+      <pre>{
+  "encrypted": "IV + encrypted text in Base64"
+}</pre>
+      <h2>Example with <code>curl</code></h2>
+      <pre>curl -X POST https://encrypt-vercel.vercel.app/api/encrypt \\
+-H "Content-Type: application/json" \\
+-d '{"text":"Hello world","key":"password123"}'</pre>
+    `;
+
+    document.getElementById('content').innerHTML = lang === 'it' ? contentIt : contentEn;
+    document.getElementById('title').textContent = lang === 'it' ? 'Documentazione API Encrypt' : 'API Encrypt Documentation';
+</script>
+</body>
+</html>
